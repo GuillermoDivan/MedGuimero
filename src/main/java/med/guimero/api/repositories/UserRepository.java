@@ -1,5 +1,6 @@
-package med.guimero.api.domain.user;
+package med.guimero.api.repositories;
 
+import med.guimero.api.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;

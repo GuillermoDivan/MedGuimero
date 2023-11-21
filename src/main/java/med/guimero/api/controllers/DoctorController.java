@@ -1,28 +1,25 @@
 package med.guimero.api.controllers;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import med.guimero.api.domain.doctor.DoctorShowData;
 import med.guimero.api.domain.doctor.DoctorRegisterData;
 import med.guimero.api.domain.doctor.DoctorUpdateData;
-import med.guimero.api.services.DoctorService;
+import med.guimero.api.services.doctor.DoctorService;
 import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
 
 
 @RestController
 @RequestMapping("/doctors")
+@RequiredArgsConstructor
 public class DoctorController {
 
     private final DoctorService doctorService;
-
-    public DoctorController(DoctorService doctorService) {
-        this.doctorService = doctorService;
-    }
 
     @PostMapping
     @Transactional
@@ -58,7 +55,7 @@ public class DoctorController {
         return ResponseEntity.ok(this.doctorService.update(doctorUpdateData));
     }
 
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("/hide/{id}")
     @Transactional
     public ResponseEntity<Boolean> turnOffDoctor(@PathVariable Long id){
         boolean turnedOff = doctorService.turnOffDoctor(id);
@@ -66,7 +63,15 @@ public class DoctorController {
         else { return ResponseEntity.badRequest().build(); }
     }
 
-    /* Este es el Delete posta posta.
+    @DeleteMapping("/reactivate/{id}")
+    @Transactional
+    public ResponseEntity<Boolean>reactivateDoctor(@PathVariable Long id){
+        boolean doctorToReactivate = doctorService.reactivateDoctor(id);
+        if (doctorToReactivate) { return ResponseEntity.ok().build(); }
+        else { return ResponseEntity.badRequest().build(); }
+    }
+
+    /*
     @DeleteMapping("/id/{id}")
     @Transactional
     public ResponseEntity<Boolean> deleteDoctor(@PathVariable Long id){

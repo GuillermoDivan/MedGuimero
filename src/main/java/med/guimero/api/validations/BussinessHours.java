@@ -1,6 +1,7 @@
-package med.guimero.api.domain.appointment.validations;
+package med.guimero.api.validations;
 
 import jakarta.validation.ValidationException;
+import lombok.RequiredArgsConstructor;
 import med.guimero.api.domain.appointment.AppointmentRegisterData;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class BussinessHours implements AppointmentValidator {
         var beforeOpening =data.date().getHour()<7;
         var afterClosing =data.date().getHour()>19;
         if(sunday || beforeOpening || afterClosing){ throw new ValidationException
-                ("El horario de atención es de 7.00 a 19.00hs, Lunes a Sábado."); }
+                ("No se pudo programar la cita. El horario de atención es de 7.00 a 19.00hs, Lunes a Sábado."); }
     }
 
 }

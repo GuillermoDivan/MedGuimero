@@ -2,9 +2,10 @@ package med.guimero.api.controllers;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import med.guimero.api.domain.appointment.AppointmentRegisterData;
 import med.guimero.api.domain.appointment.AppointmentShowData;
-import med.guimero.api.services.AppointmentService;
+import med.guimero.api.services.appointment.AppointmentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -16,11 +17,10 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/appointment")
+@RequiredArgsConstructor
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
-    public AppointmentController(AppointmentService appointmentService)
-    {this.appointmentService = appointmentService;}
 
     @PostMapping
     @Transactional
@@ -52,9 +52,9 @@ public class AppointmentController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Boolean> deleteAppointment(@PathVariable Long id){
+    public ResponseEntity<?> deleteAppointment(@PathVariable Long id){
     boolean deleted = appointmentService.delete(id);
     if (deleted) {return ResponseEntity.noContent().build(); }
-    else {return ResponseEntity.badRequest().build();}
+    else {return ResponseEntity.badRequest().body("La cita había sido eliminada previamente");}
     }
 }

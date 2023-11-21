@@ -1,8 +1,6 @@
 package med.guimero.api.domain.doctor;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 import med.guimero.api.domain.address.Address;
 import med.guimero.api.domain.appointment.Appointment;
 import java.util.List;
@@ -10,8 +8,8 @@ import java.util.List;
 @Entity(name = "Doctor")
 @Table(name = "doctors")
 @Data
-@Getter
-@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+//@EqualsAndHashCode(of = "id")
 public class Doctor {
 
     @Id
@@ -27,10 +25,7 @@ public class Doctor {
     @Embedded
     private Address address;
     @OneToMany(mappedBy = "doctor")
-    //@JoinColumn(name = "appointments_id", referencedColumnName = "doctor_id")
     private List<Appointment> appointments;
-
-    public Doctor(){}
 
     public Doctor(DoctorRegisterData doctorRegisterData) {
         this.name = doctorRegisterData.name();
@@ -42,14 +37,5 @@ public class Doctor {
         if (doctorRegisterData.address()!=null) {
             this.address = new Address(doctorRegisterData.address());
         }
-    }
-
-    public Doctor(DoctorUpdateData doctorUpdateData) {
-        this.id = doctorUpdateData.id();
-        this.name = doctorUpdateData.name();
-        this.phone = doctorUpdateData.phone();
-        this.email = doctorUpdateData.email();
-        if (doctorUpdateData.address() != null){
-        this.address = new Address(doctorUpdateData.address());}
     }
 }

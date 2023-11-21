@@ -1,5 +1,5 @@
 package med.guimero.api.infra.security;
-import med.guimero.api.domain.user.UserRepository;
+import med.guimero.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

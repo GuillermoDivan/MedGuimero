@@ -1,5 +1,6 @@
-package med.guimero.api.domain.appointment;
+package med.guimero.api.repositories;
 
+import med.guimero.api.domain.appointment.Appointment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     Page<Appointment> findAllByDoctorId(Long doctorId, Pageable paging);
     Page<Appointment> findAllByPatientId(Long patientId, Pageable paging);
     Boolean existsByPatientIdAndDateBetween (Long patientId,
-                                           LocalDateTime firstSchedule, LocalDateTime lastSchedule);
-    Boolean existsByDoctorIdAndDate(Long doctorId, LocalDateTime date);
+                                           LocalDateTime begins, LocalDateTime ends);
+    Boolean existsByDoctorIdAndDateBetween (Long doctorId,
+                                            LocalDateTime begins, LocalDateTime ends);
 }

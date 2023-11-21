@@ -45,6 +45,4 @@ public class SecurityConfigurations {
         return new BCryptPasswordEncoder();
     }
 
-    public static record JWTTokenData(String jwtToken) {
-    }
 }

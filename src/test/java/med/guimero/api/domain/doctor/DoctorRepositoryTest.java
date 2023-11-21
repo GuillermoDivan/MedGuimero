@@ -3,6 +3,7 @@ package med.guimero.api.domain.doctor;
 import med.guimero.api.domain.appointment.Appointment;
 import med.guimero.api.domain.patient.Patient;
 import med.guimero.api.domain.patient.PatientRegisterData;
+import med.guimero.api.repositories.DoctorRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

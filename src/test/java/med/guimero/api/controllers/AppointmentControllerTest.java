@@ -2,7 +2,7 @@ package med.guimero.api.controllers;
 
 import med.guimero.api.domain.appointment.*;
 import med.guimero.api.domain.doctor.Specialty;
-import med.guimero.api.services.AppointmentServiceImpl;
+import med.guimero.api.services.appointment.AppointmentServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

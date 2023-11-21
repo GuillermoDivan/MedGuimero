@@ -1,4 +1,4 @@
-package med.guimero.api.domain.appointment.validations;
+package med.guimero.api.validations;
 
 import jakarta.validation.ValidationException;
 import med.guimero.api.domain.appointment.AppointmentRegisterData;
@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Component
-public class RequiredAnticipation implements AppointmentValidator{
+public class ReservationRequiredAnticipation implements AppointmentValidator{
     public void validate(AppointmentRegisterData data){
         var now = LocalDateTime.now();
         var date = data.date();

@@ -7,6 +7,7 @@ import med.guimero.api.domain.doctor.Specialty;
 import java.time.LocalDateTime;
 
 public record AppointmentRegisterData(
+        Long id,
         @NotNull Long patientId,
         Long doctorId,
         @NotNull @Future LocalDateTime date,

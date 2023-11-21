@@ -1,12 +1,10 @@
 package med.guimero.api.domain.appointment;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.time.LocalDateTime;
-
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import med.guimero.api.domain.doctor.Doctor;
 import med.guimero.api.domain.doctor.Specialty;
 import med.guimero.api.domain.patient.Patient;
@@ -14,9 +12,8 @@ import med.guimero.api.domain.patient.Patient;
 @Entity(name = "Appointment")
 @Table(name = "appointments")
 @Data
-@Getter
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Appointment {
 
     @Id
@@ -33,9 +30,7 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     private Specialty specialty;
 
-    public Appointment() {}
-
-    public Appointment(AppointmentRegisterData data){
+    public Appointment(AppointmentRegisterData data) {
         this.patient = new Patient();
         this.patient.setId(data.patientId());
         this.doctor = new Doctor();
@@ -43,6 +38,4 @@ public class Appointment {
         this.date = data.date();
         this.specialty = data.specialty();
     }
-
-
 }

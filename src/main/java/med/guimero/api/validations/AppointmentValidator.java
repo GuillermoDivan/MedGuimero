@@ -1,4 +1,4 @@
-package med.guimero.api.domain.appointment.validations;
+package med.guimero.api.validations;
 
 import med.guimero.api.domain.appointment.AppointmentRegisterData;
 
