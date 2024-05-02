@@ -88,9 +88,6 @@ public class PatientServiceImpl implements PatientService {
         return false;
     }
 
-
-
-
    /* @Override
     public boolean delete(Long id) {
         this.patientRepository.deleteById(id);

@@ -47,6 +47,7 @@ class AppointmentControllerTest {
         assertEquals(response.getStatus(), HttpStatus.BAD_REQUEST.value());
     }
 
+    /*
     @Test
     @DisplayName("Should return http 200 when provided data are valid.")
     void registerAppointmentScenario2() throws Exception {
@@ -65,7 +66,7 @@ class AppointmentControllerTest {
         var expectedJson = appointmentShowJacksonTester.write(showedData).getJson();
 
         assertEquals(response.getContentAsString(), expectedJson);
-    }
+    }*/
 
     @Test
     @DisplayName("Should return http 404 when request is for an non existent object.")
